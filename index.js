@@ -5,6 +5,7 @@ const btnResize = document.getElementById("btnResize");
 const generationBtn = document.getElementById("generationBtn");
 const btnAcceptRules = document.querySelector(".btn-accept-rules");
 const modalWindow = document.querySelector(".modal-window");
+const sizeInput = document.getElementById("sizeInput");
 
 btnAcceptRules.onclick = () => {
   modalWindow.classList.add("hidden");
@@ -28,7 +29,7 @@ function createGrid() {
   btnStart.disabled = true;
   btnReset.disabled = true;
   clearInterval(interval);
-  const gridSize = parseInt(document.getElementById("size").value);
+  const gridSize = parseInt(document.getElementById("sizeInput").value);
   rows = cols = gridSize;
   grid = Array.from({ length: rows }, () => Array(cols).fill(0));
   prevGrid = Array.from({ length: rows }, () => Array(cols).fill(0));
@@ -120,6 +121,7 @@ function endGame(message) {
   btnReset.disabled = true;
   generationBtn.disabled = false;
   btnResize.disabled = false;
+  sizeInput.disabled = false;
 }
 let timerID;
 clearInterval(timerID);
@@ -130,6 +132,7 @@ function startGame() {
   btnStop.disabled = false;
   btnReset.disabled = true;
   btnResize.disabled = true;
+  sizeInput.disabled = true;
   generationBtn.disabled = true;
 
   timerID = setInterval(() => {
@@ -187,6 +190,7 @@ function resetGame() {
   const cells = document.querySelectorAll(".cell");
   btnStart.disabled = true;
   btnResize.disabled = false;
+  sizeInput.disabled = false;
   btnReset.disabled = true;
   generationBtn.disabled = false;
   document.getElementById("time").innerHTML = "Время: 0 сек";
