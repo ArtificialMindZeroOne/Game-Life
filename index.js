@@ -151,9 +151,11 @@ function startGame() {
         el.classList.remove("alive");
       });
       setTimeout(() => {
+        time = 0;
         endGame("Все клетки «умерли»! Игра окончена.");
       }, 100);
     } else if (!hasChanged) {
+      time = 0;
       endGame("Жизнь больше не развивается! Игра окончена.");
       setTimeout(() => {
         const cells3 = document.querySelectorAll(".cell");
@@ -164,6 +166,7 @@ function startGame() {
         });
       }, 100);
     } else if (isGridInHistory(grid)) {
+      time = 0;
       endGame("Обнаружено повторение! Игра окончена.");
       setTimeout(() => {
         const cells3 = document.querySelectorAll(".cell");
