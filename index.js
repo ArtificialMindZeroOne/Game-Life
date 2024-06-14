@@ -241,10 +241,6 @@ function nextGeneration() {
 function addGridToHistory(grid) {
   const gridCopy = grid.map((row) => row.slice());
   gridHistory.push(gridCopy);
-  if (gridHistory.length > 10) {
-    // ограничиваем длину истории до 10
-    gridHistory.shift();
-  }
 }
 
 function isGridInHistory(grid) {
