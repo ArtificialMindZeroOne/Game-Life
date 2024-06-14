@@ -112,8 +112,8 @@ input[type="number"]:focus {
 }
 
 .modal-window__content {
-    width: 70vw;
-    height: 70%;
+    width: 70%;
+    height: 80%;
     background: url('./assets/back.gif') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -127,9 +127,9 @@ input[type="number"]:focus {
     padding: 30px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
-    font-size: 22px;
+    font-size: 18px;
     overflow: auto;
 }
 
