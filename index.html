@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мини-игра "Жизнь"</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.PNG" />
+    <link href="/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 style="color: white; background-color: rgba(rgb(255, 255, 255, 0))">
+      Мини-игра "Жизнь"
+    </h1>
+    <div id="controls">
+      <button class="button" onclick="generateRandomGrid()" id="generationBtn">
+        Сгенерировать первое поколение
+      </button>
+      <button class="button" onclick="startGame()" id="startBtn" disabled>
+        Старт
+      </button>
+      <button class="button" onclick="stopGame()" id="stopBtn" disabled>
+        Стоп
+      </button>
+      <button class="button" onclick="resetGame()" id="resetBtn" disabled>
+        Сбросить
+      </button>
+      <div
+        style="
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          justify-content: flex-start;
+        "
+      >
+        <label for="size" style="color: white">Размер сетки:</label>
+        <input
+          class="inputSize"
+          type="number"
+          id="size"
+          value="20"
+          min="10"
+          max="100"
+        />
+      </div>
+      <button class="button" onclick="createGrid()" id="btnResize">
+        Установить размер сетки
+      </button>
+      <div id="time">Время: 0 сек</div>
+    </div>
+    <div id="grid"></div>
+    <div class="modal-window">
+      <div class="modal-window__back"></div>
+      <div class="modal-window__content">
+        <h1 style="background-color: rgba(237, 237, 237, 0.8); padding: 2px">
+          Мини-игра "Жизнь"
+        </h1>
+        <h2>Правила</h2>
+        <ul>
+          <li>
+            Место действия игры — размеченная на клетки плоскость, которая может
+            быть безграничной, ограниченной или замкнутой.
+          </li>
+          <li>
+            Каждая клетка на этой поверхности имеет восемь соседей, окружающих
+            её, и может находиться в двух состояниях: быть «живой» (заполненной)
+            или «мёртвой» (пустой).
+          </li>
+          <li>
+            Распределение живых клеток в начале игры называется первым
+            поколением. Каждое следующее поколение рассчитывается на основе
+            предыдущего по таким правилам:
+          </li>
+          <li style="margin-left: 20px">
+            в пустой (мёртвой) клетке, с которой соседствуют три живые клетки,
+            зарождается жизнь;
+          </li>
+          <li style="margin-left: 20px">
+            если у живой клетки есть две или три живые соседки, то эта клетка
+            продолжает жить; в противном случае (если живых соседей меньше двух
+            или больше трёх) клетка умирает («от одиночества» или «от
+            перенаселённости»).
+          </li>
+          <li>Игра прекращается, если</li>
+          <li style="margin-left: 20px">
+            на поле не останется ни одной «живой» клетки;
+          </li>
+          <li style="margin-left: 20px">
+            конфигурация на очередном шаге в точности (без сдвигов и поворотов)
+            повторит себя же на одном из более ранних шагов (складывается
+            периодическая конфигурация)
+          </li>
+          <li style="margin-left: 20px">
+            при очередном шаге ни одна из клеток не меняет своего состояния
+            (частный случай предыдущего правила, складывается стабильная
+            конфигурация)
+          </li>
+        </ul>
+        <h4>
+          Игрок не принимает активного участия в игре. Он лишь расставляет или
+          генерирует начальную конфигурацию «живых» клеток, которые затем
+          изменяются согласно правилам. Несмотря на простоту правил, в игре
+          может возникать огромное разнообразие форм.
+        </h4>
+        <button type="button" class="btn-accept-rules">ОК</button>
+      </div>
+    </div>
+    <script src="/index.js"></script>
+  </body>
+</html>
